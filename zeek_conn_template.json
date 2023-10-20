@@ -1,0 +1,30 @@
+{
+  "index_patterns": ["zeek-conn*"],
+  "settings": {
+    "number_of_shards": 1,
+    "number_of_replicas": 1
+  },
+  "mappings": {
+	"numeric_detection": false
+    "properties": {
+      "orig_bytes": { "type": "text" },
+      "missed_bytes": { "type": "text" },
+      "conn_state": { "type": "text" },
+	  "id.resp_p": {"type": "text"},
+	  "local_resp": {"type": "text"},
+	  "orig_pkts": {"type": "text"},
+	  "resp_bytes": {"type": "text"},
+	  "proto": {"type": "text"},
+	  "local_orig": {"type": "boolean"},
+	  "id.orig_h": {"type": "ip"},
+	  "duration": {"type": "text"},
+	  "uid": {"type": "text"},
+	  "orig_ip_bytes": {"type": "text"},
+	  "id.resp_h": {"type": "ip"},
+	  "id.orig_p": {"type": "text"},
+	  "history": {"type": "text"},
+	  "resp_pkts": {"type": "text"},
+	  "resp_ip_bytes": {"type": "text"}
+    }
+  }
+}

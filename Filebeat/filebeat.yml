@@ -1,0 +1,47 @@
+#filebeat.inputs:
+#- type: log
+#  enabled: true
+#  paths:
+  # Place your Zeek logs in that directory
+#    - /usr/share/filebeat/compliancelogs/*.log
+#  scan_frequency: 1s  # Check for updates every 1 second
+#  ignore_older: 2h
+
+
+# Create one Input "-" for each of the file categories?
+filebeat.inputs:
+ - type: filestream
+   id: zeek_data
+   paths:
+    - /usr/share/filebeat/compliancelogs/conn.log
+   prospector.scanner.resend_on_touch: true
+   prospector.scanner.check_interval: 5s
+   close.on_state_change.inactive: 1m
+   
+   parsers:
+    - ndjson:
+        target: "conn_log"
+       
+ - type: filestream
+   id: zeek_data
+   paths:
+    - /usr/share/filebeat/compliancelogs/first_layer.log
+   prospector.scanner.resend_on_touch: true
+   prospector.scanner.check_interval: 5s
+   close.on_state_change.inactive: 1m
+   
+   parsers:
+    - ndjson:
+        target: "first_layer_log"
+        # message_key: msg
+   
+setup.kibana:
+  host: "kibana:5601"
+  username: "elastic"
+  password: "elastic1234"  
+  
+output.logstash:
+ hosts: ["logstash01:5044"]
+
+#output.console:
+ #pretty: true

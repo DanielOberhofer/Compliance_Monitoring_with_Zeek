@@ -1,0 +1,17 @@
+#xpack.fleet.packages:
+  #- name: system
+   # version: latest
+  #- name: elastic_agent
+ #   version: latest
+#xpack.fleet.agentPolicies:
+  #- name: Agent policy 1
+    #id: agent-policy-1
+    #namespace: default
+    #monitoring_enabled:
+      #- logs
+     # - metrics
+    #package_policies:
+   #   - name: system-1
+  #      id: default-system
+ #       package:
+#          name: system

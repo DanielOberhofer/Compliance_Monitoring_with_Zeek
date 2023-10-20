@@ -1,0 +1,7 @@
+#fields	id	sender_ip	sender_port	receiver_ip	receiver_port	protocol	max_package_size	encrypted	isWireless
+Flow_1mc78uf	192.168.95.1	22	192.168.95.25	4840	OPCUA	5	F	F
+Flow_15rhb7z	192.168.95.25	22	192.168.95.1	4840	DnS	7	T	T
+Flow_00bxzor	192.168.95.1	22	192.168.95.3	433	HTTPS	64	F	F
+Flow_1w50p52	192.168.95.3	5045	192.168.95.1	1883	MQTT	24	T	F
+Flow_1yez84m	192.168.95.1	5045	192.168.95.13	5683	COAP	7	F	F
+Flow_19tlbfe	192.168.95.13	5045	192.168.95.1	502	MODBUS	20	F	F

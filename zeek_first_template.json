@@ -1,0 +1,20 @@
+{
+  "index_patterns": ["zeek-first*"],
+  "settings": {
+    "number_of_shards": 1,
+    "number_of_replicas": 1
+  },
+  "mappings": {
+	"numeric_detection": false,
+    "properties": {
+      "ts": { "type": "text" },
+      "id.orig_h": { "type": "ip" },
+      "id.orig_p": { "type": "text" },
+	  "id.resp_h": {"type": "ip"},
+	  "id.resp_p": {"type": "text"},
+	  "service": {"type": "text"},
+	  "missed_bytes": {"type": "text"}
+	  
+    }
+  }
+}

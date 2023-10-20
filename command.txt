@@ -1,0 +1,28 @@
+curl -X PUT --cacert config/certs/ca/ca.crt -u "elastic:${ELASTIC_PASSWORD}" "https://es01:9200/_template/zeek_template" -H "Content-Type: application/json" -d @zeek-template.json
+
+
+
+until curl -s -X POST --cacert config/certs/ca/ca.crt -u "elastic:${ELASTIC_PASSWORD}" -H "Content-Type: application/json" https://es01:9200/_security/user/kibana_system/_password -d "{\"password\":\"${KIBANA_PASSWORD}\"}" | grep -q "^{}"; do sleep 10; done;
+
+
+command to store the index-template (ip for setup container):
+
+curl -X PUT --cacert config/certs/ca/ca.crt -u "elastic:${ELASTIC_PASSWORD}" "https://es01:9200/_template/zeek_template" -H "Content-Type: application/json" -d "@/tmp/zeek-template.json";
+
+command for external ubuntu:
+curl -X PUT --cacert ca.crt -u "elastic:elastic1234" "https://127.0.0.1:9200/_template/zeek_template" -H "Content-Type: application/json" -d "@zeek-template.json"
+
+
+
+command: >
+     bash -c '
+     curl -X PUT --cacert config/certs/ca/ca.crt -u "elastic:elastic1234" "https://localhost:9200/_template/zeek_template" -H "Content-Type: application/json" -d "@/tmp/zeek-template.json";
+     echo "Index-template was updated";
+     '
+
+
+
+
+working command for external ubuntu:
+curl -X PUT --cacert ca.crt -u "elastic:elastic1234" "https://127.0.0.1:9200/_template/zeek_template" -H "Content-Type: application/json" -d "@zeek-conn-template.json"
+curl -X PUT --cacert ca.crt -u "elastic:elastic1234" "https://127.0.0.1:9200/_template/zeek_template" -H "Content-Type: application/json" -d "@zeek-first-template.json"
