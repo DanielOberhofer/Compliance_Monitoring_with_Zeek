@@ -1,0 +1,5 @@
+#fields	isMonitored	auth_attempts	cert_valid	isHuman	isUntrusted	isWireless	max_package_size	ip	security_level	netmask	isMobile	isEntryPoint	CIDR
+T	2	F	T	T	T	64	192.168.95.25	1	255.255.255.0	F	F	192.168.95.0/24
+F	4	T	F	F	F	34	192.168.95.3	3	255.255.255.0	T	T	192.168.95.0/24
+F	6	F	F	F	F	-	192.168.95.13	1	255.255.0.0	F	F	192.168.0.0/16
+F	5	F	F	F	F	-	192.168.95.1	1	255.255.0.0	F	F	192.168.0.0/16

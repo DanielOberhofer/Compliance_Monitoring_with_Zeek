@@ -33,7 +33,18 @@ filebeat.inputs:
    parsers:
     - ndjson:
         target: "first_layer_log"
-        # message_key: msg
+
+ - type: filestream
+   id: zeek_data
+   paths:
+    - /usr/share/filebeat/compliancelogs/second_layer.log
+   prospector.scanner.resend_on_touch: true
+   prospector.scanner.check_interval: 5s
+   close.on_state_change.inactive: 1m
+   
+   parsers:
+    - ndjson:
+        target: "second_layer_log"       
    
 setup.kibana:
   host: "kibana:5601"
